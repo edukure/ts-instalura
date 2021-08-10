@@ -2,9 +2,21 @@ import styled, { css, CSSProperties } from 'styled-components';
 import get from 'lodash/get';
 
 import { Theme } from '../../../theme';
-import { breakpointsMediaQuery, BreakpointsStyles } from '../../../theme/utils/breakpointsMediaQuery';
+import {
+  breakpointsMediaQuery,
+  BreakpointsStyles,
+} from '../../../theme/utils/breakpointsMediaQuery';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { typographyVariantToStyle } from '../../../theme/utils/typographyVariantToStyle';
+
+interface ButtonProps {
+  ghost?: boolean;
+  variant?: keyof typeof ButtonVariants; // weird stuff lol
+  // variant?: "primary.main" | "secondary.main" | "tertiary.main" | "tertiary.light";
+  theme?: Theme;
+  margin?: CSSProperties['margin'] | BreakpointsStyles<CSSProperties['margin']>;
+  display?: CSSProperties['display'] | BreakpointsStyles<CSSProperties['display']>;
+}
 
 const ButtonGhost = css<ButtonProps>`
   color: ${(props) => {
@@ -23,17 +35,11 @@ const ButtonDefault = css<ButtonProps>`
   }};
 `;
 
-interface ButtonProps {
-  ghost?: boolean;
-  variant?: keyof typeof ButtonVariants; // weird stuff lol
-  // variant?: "primary.main" | "secondary.main" | "tertiary.main" | "tertiary.light";
-  theme?: Theme;
-  margin?: CSSProperties['margin'] | BreakpointsStyles<CSSProperties['margin']>;
-  display?: CSSProperties['display'] | BreakpointsStyles<CSSProperties['display']>;
-}
-
 enum ButtonVariants {
-  "primary.main" , "secondary.main" , "tertiary.main" , "tertiary.light"
+  'primary.main',
+  'secondary.main',
+  'tertiary.main',
+  'tertiary.light',
 }
 
 const Button = styled.button<ButtonProps>`

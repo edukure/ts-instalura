@@ -1,6 +1,8 @@
-import { ApplyStyleToBreakpoint, breakpointsMediaQuery, cssByBreakpoints } from './breakpointsMediaQuery';
-
-import { CSSProperties } from 'react';
+import {
+  ApplyStyleToBreakpoint,
+  breakpointsMediaQuery,
+  cssByBreakpoints,
+} from './breakpointsMediaQuery';
 
 /*
   Por padrão, a função applyStyleToBreakpoint irá associar à propriedade CSS ao nome da prop.
@@ -67,35 +69,3 @@ export const propToStyle = (propName: string, applyStyleToBreakpoint?: ApplyStyl
     };
   };
 };
-
-// export const propToStyle = (
-//   propName: keyof CSSProperties
-// ) => {
-//   return (props) => {
-
-//     if(!props[propName]) return;
-
-//     const propValue = props[propName];
-
-//     // conversão de prop simples sem responsividade
-//     if (typeof propValue === 'string' || typeof propValue === 'number') {
-//       return {
-//         [propName]: props[propName],
-//       };
-//     }
-
-//     if (typeof propValue === 'object') {
-//       //  função padrão que apenas associa a chave CSSProperty com seu valor
-//       const applyStyleToBreakpoint = (value) => {
-//         return { [propName]: value };
-//       };
-
-//       const stylesByBreakpoints = cssByBreakpoints(propValue, applyStyleToBreakpoint);
-//       return breakpointsMediaQuery(stylesByBreakpoints);
-//     }
-
-//     return {
-//       [propName]: props[propName],
-//     };
-//   };
-// };
